@@ -1,0 +1,22 @@
+<main class="page">
+  <section class="hero">
+    <h1>Angular Learning Tasks</h1>
+    <p>Work through these steps and check them off as you go.</p>
+  </section>
+
+  <section class="tasks">
+    <header>
+      <h2>Tasks</h2>
+      <p>Completed: {{ completedCount }} / {{ tasks.length }}</p>
+    </header>
+
+    <ul>
+      <li *ngFor="let task of tasks">
+        <label>
+          <input type="checkbox" [(ngModel)]="task.done" />
+          <span [class.done]="task.done">{{ task.title }}</span>
+        </label>
+      </li>
+    </ul>
+  </section>
+</main>
