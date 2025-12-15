@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
+import { NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TopicsComponent } from './topics.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, NgFor, TopicsComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
