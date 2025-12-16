@@ -1,0 +1,5 @@
+[
+    { "title": "Angular Docs", "url": "https://angular.dev", "type": "docs" },
+    { "title": "Angular Tutorial", "url": "https://angular.dev/tutorials", "type": "tutorial" },
+    { "title": "RxJS Docs", "url": "https://rxjs.dev", "type": "docs" }
+  ]
