@@ -18,6 +18,16 @@
         </label>
       </li>
     </ul>
+    <form class="new-task" (ngSubmit)="addTask()" #taskForm="ngForm">
+      <input
+        type="text"
+        name="title"
+        [(ngModel)]="newTaskTitle"
+        placeholder="New task title..."
+        required
+      />
+      <button type="submit" [disabled]="taskForm.invalid">Add task</button>
+    </form>
   </section>
 
   <app-topics></app-topics>

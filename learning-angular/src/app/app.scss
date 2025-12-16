@@ -58,3 +58,30 @@ input[type='checkbox'] {
   text-decoration: line-through;
   color: #9ca3af;
 }
+
+.new-task {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.new-task input {
+  flex: 1;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+}
+
+.new-task button {
+  padding: 0.4rem 0.9rem;
+  border-radius: 4px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+}
+
+.new-task button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}

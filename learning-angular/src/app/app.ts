@@ -12,6 +12,7 @@ import { TopicsComponent } from './topics.component';
 })
 export class App {
   title = 'learning-angular';
+  newTaskTitle = '';
 
   tasks = [
     { title: 'Run the app with ng serve', done: false },
@@ -22,5 +23,13 @@ export class App {
 
   get completedCount() {
     return this.tasks.filter(t => t.done).length;
+  }
+
+  addTask() {
+    const title = this.newTaskTitle.trim();
+    if (!title) return;
+  
+    this.tasks.push({ title, done: false });
+    this.newTaskTitle = '';
   }
 }
