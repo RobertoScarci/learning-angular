@@ -1,12 +1,14 @@
 import { Component, inject } from '@angular/core';
-import { NgFor, AsyncPipe } from '@angular/common';
+import { NgFor, AsyncPipe, } from '@angular/common';
 import { TopicsService, Topic } from './topics';
 import { map, Observable } from 'rxjs';
+import { RouterLink } from '@angular/router';
+
 
 @Component({
   selector: 'app-topics',
   standalone: true,
-  imports: [NgFor, AsyncPipe],
+  imports: [NgFor, AsyncPipe, RouterLink],
   template: `
     <section class="topics">
       <header>
@@ -25,7 +27,9 @@ import { map, Observable } from 'rxjs';
       <ul>
         <li *ngFor="let topic of filteredTopics$ | async">
           <div>
-            <strong>{{ topic.title }}</strong>
+            <a [routerLink]="['/topics', topic.title]">
+              <strong>{{ topic.title }}</strong>
+            </a>
             <span class="pill">{{ topic.level }}</span>
           </div>
           <small>{{ topic.minutes }} min</small>
