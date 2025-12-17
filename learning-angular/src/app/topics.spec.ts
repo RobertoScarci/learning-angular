@@ -1,16 +1,45 @@
 import { TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
 
-import { Topics } from './topics';
+import { TopicsComponent } from './topics.component';
+import { TopicsService, Topic } from './topics';
 
-describe('Topics', () => {
-  let service: Topics;
+class FakeTopicsService {
+  getTopics() {
+    const data: Topic[] = [
+      { title: 'A', level: 'beginner', minutes: 10 },
+      { title: 'B', level: 'intermediate', minutes: 20 },
+      { title: 'C', level: 'advanced', minutes: 30 },
+    ];
+    return of(data);
+  }
+}
+
+describe('TopicsComponent', () => {
+  let component: TopicsComponent;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(Topics);
+    TestBed.configureTestingModule({
+      imports: [TopicsComponent],
+      providers: [{ provide: TopicsService, useClass: FakeTopicsService }],
+    });
+
+    const fixture = TestBed.createComponent(TopicsComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should filter topics by level', (done) => {
+    component.selectedLevel = 'beginner';
+
+    component.filteredTopics$.subscribe(items => {
+      expect(items.length).toBe(1);
+      expect(items[0].level).toBe('beginner');
+      done();
+    });
   });
 });
